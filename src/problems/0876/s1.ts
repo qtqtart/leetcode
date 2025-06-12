@@ -1,3 +1,5 @@
+import type { ListNode } from "@/utils/list-node";
+
 function middleNode(head: ListNode | null): ListNode | null {
   let slow = head;
   let fast = head;
