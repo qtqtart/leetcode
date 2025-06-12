@@ -1,3 +1,5 @@
+// listnode
+
 class Node {
   value: number;
   next: Node | null;
