@@ -1,3 +1,5 @@
+// stack
+
 function removeStars(str: string): string {
   const stack: string[] = [];
 

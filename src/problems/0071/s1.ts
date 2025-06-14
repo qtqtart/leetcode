@@ -1,3 +1,5 @@
+// stack
+
 function simplifyPath(path: string): string {
   const stack: string[] = [];
 

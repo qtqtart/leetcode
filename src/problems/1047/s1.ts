@@ -1,3 +1,5 @@
+// stack
+
 function removeDuplicates(str: string): string {
   const stack: string[] = [];
 

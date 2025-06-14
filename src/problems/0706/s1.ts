@@ -1,3 +1,5 @@
+// hashmap + linked-list
+
 class Node {
   public key: number;
   public val: number;

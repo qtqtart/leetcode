@@ -1,3 +1,5 @@
+// linked-list
+
 class Node {
   public val: number;
   public next: Node | null;
