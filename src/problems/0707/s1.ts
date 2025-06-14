@@ -1,78 +1,82 @@
-// listnode
-
-class Node {
-  value: number;
-  next: Node | null;
-
-  constructor(value: number = 0, next: Node | null = null) {
-    this.value = value;
-    this.next = next;
-  }
-}
+import { ListNode } from "@/utils/list-node";
 
 class MyLinkedList {
-  public head: Node | null;
-  public length: number;
+  public head: ListNode | null;
+  public size: number;
 
   constructor() {
     this.head = null;
-    this.length = 0;
+    this.size = 0;
   }
 
   get(index: number): number {
-    if (index < 0 || index >= this.length) {
+    if (index < 0 || index >= this.size) {
       return -1;
     }
 
     let curr = this.head;
     for (let i = 0; i < index; i++) {
-      curr = curr!.next;
+      curr = curr.next;
     }
-    return curr!.value;
+    return curr.val;
   }
 
   addAtHead(val: number): void {
-    this.addAtIndex(0, val);
+    const node = new ListNode(val);
+    node.next = this.head;
+
+    this.head = node;
+    this.size++;
   }
 
   addAtTail(val: number): void {
-    this.addAtIndex(this.length, val);
+    const node = new ListNode(val);
+    if (!this.head) {
+      this.head = node;
+    } else {
+      let curr = this.head;
+      while (curr.next) {
+        curr = curr.next;
+      }
+      curr.next = node;
+    }
+    this.size++;
   }
 
   addAtIndex(index: number, val: number): void {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index > this.size) {
       return;
     }
 
-    const newNode = new Node(val);
+    const node = new ListNode(val);
     if (index === 0) {
-      newNode.next = this.head;
-      this.head = newNode;
+      node.next = this.head;
+      this.head = node;
     } else {
       let curr = this.head;
       for (let i = 0; i < index - 1; i++) {
         curr = curr!.next;
       }
-      newNode.next = curr!.next;
-      curr!.next = newNode;
+      node.next = curr!.next;
+      curr!.next = node;
     }
-    this.length++;
+    this.size++;
   }
 
   deleteAtIndex(index: number): void {
-    if (index < 0 || index >= this.length) {
+    if (index < 0 || index >= this.size) {
       return;
     }
 
     if (index === 0) {
-      this.head = this.head!.next;
+      this.head = this.head.next;
     } else {
       let curr = this.head;
       for (let i = 0; i < index - 1; i++) {
-        curr = curr!.next;
+        curr = curr.next;
       }
-      curr!.next = curr!.next!.next;
+      curr.next = curr.next.next;
     }
-    this.length--;
+    this.size--;
   }
 }

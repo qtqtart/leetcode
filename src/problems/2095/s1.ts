@@ -1,6 +1,6 @@
 import type { ListNode } from "@/utils/list-node";
 
-// listnode
+// linked-list
 
 function deleteMiddle(head: ListNode | null): ListNode | null {
   if (!head.next) {
