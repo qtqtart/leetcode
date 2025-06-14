@@ -1,6 +1,6 @@
 import { ListNode } from "@/utils/list-node";
 
-// listnode
+// linked-list
 
 function mergeTwoLists(
   list1: ListNode | null,

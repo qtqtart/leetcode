@@ -1,5 +1,7 @@
 import { ListNode } from "@/utils/list-node";
 
+// linked-list
+
 function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   const dummy = new ListNode();
   dummy.next = head;

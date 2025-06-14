@@ -1,6 +1,6 @@
 import type { ListNode } from "@/utils/list-node";
 
-// listnode
+// linked-list
 
 function middleNode(head: ListNode | null): ListNode | null {
   let slow = head;

@@ -1,16 +1,14 @@
 class Node {
-  public key: number;
   public val: number;
   public next: Node | null;
 
-  constructor(key?: number, val?: number, next?: Node | null) {
-    this.key = key !== undefined ? key : 0;
+  constructor(val?: number) {
     this.val = val !== undefined ? val : 0;
-    this.next = next !== undefined ? next : null;
+    this.next = null;
   }
 }
 
-class LinkedList {
+class MyLinkedList {
   public head: Node | null;
   public size: number;
 
@@ -19,83 +17,74 @@ class LinkedList {
     this.size = 0;
   }
 
-  get(key: number): number {
+  get(index: number): number {
+    if (index < 0 || index >= this.size) {
+      return -1;
+    }
+
     let curr = this.head;
-    while (curr) {
-      if (curr.key === key) {
-        return curr.val;
-      }
+    for (let i = 0; i < index; i++) {
       curr = curr.next;
     }
-    return -1;
+    return curr.val;
   }
 
-  put(key: number, val: number): void {
-    let curr = this.head;
-    while (curr) {
-      if (curr.key === key) {
-        curr.val = val;
-        return;
-      }
-      curr = curr.next;
-    }
+  addAtHead(val: number): void {
+    const node = new Node(val);
+    node.next = this.head;
 
-    const node = new Node(key, val, this.head);
     this.head = node;
     this.size++;
   }
 
-  remove(key: number): void {
+  addAtTail(val: number): void {
+    const node = new Node(val);
     if (!this.head) {
-      return;
-    }
-
-    if (this.head.key === key) {
-      this.head = this.head.next;
-      this.size--;
-      return;
-    }
-
-    let prev = this.head;
-    let curr = this.head.next;
-    while (curr) {
-      if (curr.key === key) {
-        prev.next = curr.next;
-        this.size--;
-        return;
+      this.head = node;
+    } else {
+      let curr = this.head;
+      while (curr.next) {
+        curr = curr.next;
       }
-      prev = curr;
-      curr = curr.next;
+      curr.next = node;
     }
+    this.size++;
   }
-}
 
-class MyHashMap {
-  private n: number;
-  private buckets: LinkedList[];
-
-  constructor() {
-    this.n = 13;
-    this.buckets = [];
-
-    for (let i = 0; i < this.n; i++) {
-      this.buckets[i] = new LinkedList();
+  addAtIndex(index: number, val: number): void {
+    if (index < 0 || index > this.size) {
+      return;
     }
+
+    const node = new Node(val);
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      let curr = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        curr = curr!.next;
+      }
+      node.next = curr!.next;
+      curr!.next = node;
+    }
+    this.size++;
   }
 
-  put(key: number, val: number): void {
-    this.buckets[this.hash(key)].put(key, val);
-  }
+  deleteAtIndex(index: number): void {
+    if (index < 0 || index >= this.size) {
+      return;
+    }
 
-  get(key: number): number {
-    return this.buckets[this.hash(key)].get(key);
-  }
-
-  remove(key: number): void {
-    this.buckets[this.hash(key)].remove(key);
-  }
-
-  private hash(key: number): number {
-    return key % this.n;
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      let curr = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        curr = curr.next;
+      }
+      curr.next = curr.next.next;
+    }
+    this.size--;
   }
 }

@@ -1,6 +1,6 @@
 import type { ListNode } from "@/utils/list-node";
 
-// listnode
+// linked-list
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
   let curr = head;

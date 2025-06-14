@@ -1,6 +1,6 @@
 import { ListNode } from "@/utils/list-node";
 
-// listnode
+// linked-list
 
 function swapPairs(head: ListNode | null): ListNode | null {
   const dummy = new ListNode();
