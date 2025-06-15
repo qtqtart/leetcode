@@ -1,6 +1,6 @@
 import type { TreeNode } from "@/utils/tree-node";
 
-// tree-node
+//binary-tree
 
 function invertTree(root: TreeNode | null): TreeNode | null {
   function dfs(node: TreeNode | null): void {

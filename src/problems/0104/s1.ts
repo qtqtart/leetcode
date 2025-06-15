@@ -1,6 +1,6 @@
 import type { TreeNode } from "@/utils/tree-node";
 
-// tree-node
+//binary-tree
 
 function maxDepth(root: TreeNode | null): number {
   function dfs(node: TreeNode | null): number {

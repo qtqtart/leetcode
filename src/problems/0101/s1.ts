@@ -1,6 +1,6 @@
 import type { TreeNode } from "@/utils/tree-node";
 
-// tree-node
+//binary-tree
 
 function isSymmetric(root: TreeNode | null): boolean {
   if (!root) {
